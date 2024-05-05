@@ -6,40 +6,49 @@ incompleted_tasks = []
 completed_tasks = []
 
 # ============== Functions ============= 
-def add_task(inc_list, comp_lst):
+def add_task(inc_list, comp_list):
   task = input("\nEnter your task:")
   # Prevent to add same task if it already exists in completed
-  if task not in inc_list and task not in comp_lst: 
+  if task not in inc_list and task not in comp_list: 
      inc_list.append(task)
-     print(inc_list)
+     print("\033[91m" + "Incompleted tasks: ", inc_list , "\033[0m")
   else:
     print("\nTask already exists.")
   
-def view_tasks(inc_list, comp_lst):
-  action = input("Enter 'C' to see completed tasks or Enter 'I' to see Incompleted tasks ")
-  if action.lower() == 'I'.lower():
-    print("Incompleted Tasks: ", inc_list)
-  elif action.lower() == 'C'.lower():    
-    print("Completed Tasks", comp_lst)
+def view_tasks(inc_list, comp_list):
+  sort_by = input("Enter 'OR', 'ASC', or 'DESC' to view tasks in order of their creation, ascending, or descending, respectively ")
+  if sort_by.lower() == 'OR'.lower():
+    print("\033[91m" + "Incompleted tasks: ", inc_list , "\033[0m")
+    print("\033[92m" + "Completed tasks: ", comp_list, "\033[0m")
     
+  elif sort_by.lower() == 'ASC'.lower():
+    print("\033[91m" + "Incompleted tasks: ", sorted(inc_list), "\033[0m")
+    print("\033[92m" + "Completed tasks: ", sorted(comp_list), "\033[0m")
+      
+  elif sort_by.lower() == 'DESC'.lower():    
+    print("\033[91m" + "Incomplete tasks: ", sorted(inc_list, reverse=True), "\033[0m")
+    print("\033[92m" + "Complete tasks: ", sorted(comp_list, reverse=True), "\033[0m")  
 # removes task from incompleted list and add to the completed list    
-def mark_task_completed(inc_lst, comp_lst):
+def mark_task_completed(inc_list, comp_list):
   task = input("Enter the task that you want to mark as completed: ")
   try:
-    inc_lst.remove(task)
-    comp_lst.append(task)
+    inc_list.remove(task)
+    comp_list.append(task)
   except:
-     print("\n Task does not exist.\n")       
+    print("\n Task does not exist.\n")   
+  finally:
+    print("\033[91m" + "Incompleted tasks: ", inc_list , "\033[0m")
+    print("\033[92m" + "Completed tasks: ", comp_list, "\033[0m")   
      
 # Handles the error in case of removing non-existent task
 def delete_task(inc_list):  
   task = input("Which task you want to remove? ")
   try:
       inc_list.remove(task)
-      print(inc_list)
   except:
     print("\n Task does not exist.\n")
-
+  finally:
+    print("\033[91m" + "Incompleted tasks: ", inc_list , "\033[0m")
 
 # ============== Run App =============== 
 def run_app():
