@@ -16,7 +16,7 @@ def add_task(inc_list, comp_list):
     print("\nTask already exists.")
   
 def view_tasks(inc_list, comp_list):
-  sort_by = input("Enter 'OR', 'ASC', or 'DESC' to view tasks in order of their creation, ascending, or descending, respectively ")
+  sort_by = input("Enter 'OR', 'ASC', or 'DESC' to view tasks in order of their creation (original state), ascending, or descending, respectively ")
   if sort_by.lower() == 'OR'.lower():
     print("\033[91m" + "Incompleted tasks: ", inc_list , "\033[0m")
     print("\033[92m" + "Completed tasks: ", comp_list, "\033[0m")
