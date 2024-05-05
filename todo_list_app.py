@@ -27,7 +27,8 @@ def view_tasks(inc_list, comp_list):
       
   elif sort_by.lower() == 'DESC'.lower():    
     print("\033[91m" + "Incomplete tasks: ", sorted(inc_list, reverse=True), "\033[0m")
-    print("\033[92m" + "Complete tasks: ", sorted(comp_list, reverse=True), "\033[0m")  
+    print("\033[92m" + "Complete tasks: ", sorted(comp_list, reverse=True), "\033[0m")
+      
 # removes task from incompleted list and add to the completed list    
 def mark_task_completed(inc_list, comp_list):
   task = input("Enter the task that you want to mark as completed: ")
