@@ -7,7 +7,7 @@ completed_tasks = []
 
 # ============== Functions ============= 
 def add_task(inc_list, comp_list):
-  task = input("\nEnter your task:")
+  task = input("\nEnter your task:").lower()
   # Prevent to add same task if it already exists in completed
   if task not in inc_list and task not in comp_list: 
      inc_list.append(task)
